@@ -1,0 +1,44 @@
+---
+title: "What is Orrery"
+description: "Mav's company intelligence layer — Claude Code with secure, read-only access to our real systems and working artifacts."
+sidebarTitle: "What is Orrery"
+---
+
+Orrery is Mav's **company intelligence layer**: Claude Code running inside a secure, read-only, network-locked container with live access to our real systems and our working artifacts. You launch it with `bin/orrery`.
+
+The idea, inspired by Block's [_From Hierarchy to Intelligence_](https://block.xyz/inside/from-hierarchy-to-intelligence): instead of knowledge living in people's heads and moving through meetings and management layers, the intelligence lives in the system and people work at the edge. Orrery is that system for Mav — it answers questions about the business grounded in real data, and it runs our core processes ("skills") end to end, or walks a human through them.
+
+<Info>
+  This documentation is the **living source** Orrery reads from. Our EOS world-model and every department's core processes live here, so updating a process here changes how Orrery runs it — with no code change.
+</Info>
+
+## What it can see
+
+- **Production data** — the Mav and Dolores databases (read-only), Mixpanel, Linear, New Relic, Stripe.
+- **Working artifacts** — Granola meeting transcripts, Todoist tasks, Notion, and this documentation.
+- **The codebase** — to ground its answers in how the system actually works.
+
+## Why it's trustworthy
+
+<CardGroup cols={3}>
+  <Card title="Read-only" icon="lock">
+    It cannot write, update, or delete production data.
+  </Card>
+
+  <Card title="Network-locked" icon="shield">
+    It can only reach an allow-listed set of services. Nothing leaks out.
+  </Card>
+
+  <Card title="Grounded" icon="book">
+    It carries Mav's data-model lexicon, so it queries the right data (and knows our Classic-vs-Next split) instead of guessing.
+  </Card>
+</CardGroup>
+
+## Two ways this guide is used
+
+1. **A getting-started guide for the company** — what Orrery is, how to use it, and how we run (our EOS world-model and core processes).
+2. **The context Orrery itself pulls in** — the launcher reads these docs so it knows what we're doing as a business and how each core process works.
+
+<Note>
+  New here? Start with [How we use it](/how-we-use-it). Looking for a specific process? See **Core Processes**, organized by department.
+</Note>

@@ -1,0 +1,54 @@
+---
+title: "How we use it"
+description: "Launch Orrery, ask it questions grounded in real data, and run a department's core process as a skill."
+sidebarTitle: "How we use it"
+icon: "terminal"
+---
+
+Orrery is the one way the team touches this intelligence layer. You don't install anything per-person or wire up credentials — you launch the secure container and start asking.
+
+## Launch it
+
+From the `mav` repo:
+
+```bash
+bin/orrery
+```
+
+This builds the secure container (if needed) and boots Claude Code with read-only access to our systems, the curated set of MCP connectors, and Mav's data-model lexicon already in context. The first time you use a connector (Granola, Mixpanel, Tella, Mintlify, …) a browser opens once to authorize it.
+
+## Ask it questions
+
+Talk to it in plain language. Because it carries the lexicon, it checks which engine an account is on (Classic vs Next) and queries the right place instead of guessing.
+
+<CardGroup cols={2}>
+  <Card title="Customer data" icon="database">
+    "How many qualified transfers did account X have last month?" · "Which accounts launched in the last 30 days have sent zero leads?"
+  </Card>
+
+  <Card title="Company state" icon="chart-line">
+    "What are this quarter's rocks and how are they tracking?" · "What did the last leadership L10 decide about the at-risk metric?" (reads these docs \+ Granola transcripts)
+  </Card>
+</CardGroup>
+
+## Run a core process (a skill)
+
+Mav's core processes are available as **skills**, namespaced by department — invoked as `department:skill`. A skill pulls its authoritative definition from these docs and runs it end to end against real data, pausing for your confirmation before it creates anything.
+
+Example — the Customer Success at-risk review:
+
+```text
+customer-success:at-risk
+```
+
+- **No argument** → it scans accounts and returns the customers that look at-risk, with the evidence.
+- **Pass a customer** → it evaluates just that account, classifies the scenario, diagnoses Mav-owned vs client-owned, and proposes a recovery plan with an owner and next actions (drafting a Linear ticket / Todoist tasks for your approval).
+
+<Note>
+  "Skill" is the umbrella term in Orrery. Some Customer Success and Sales processes are called "playbooks" internally in the docs — in Orrery they're simply department skills.
+</Note>
+
+## What it will and won't do
+
+- **Will**: read production data, cite its sources, walk you through a process, and draft work for your review.
+- **Won't**: change production data, reach any service that isn't allow-listed, or guess when it can look something up — if a signal isn't reachable (e.g. a HubSpot field), it asks you rather than inventing an answer.
