@@ -1,0 +1,37 @@
+---
+title: "Troubleshoot"
+description: "Triage a client issue end-to-end: severity, ownership routing, ticket + client update."
+sidebarTitle: "Troubleshoot"
+icon: "wrench"
+tag: "Soon"
+---
+
+<Info>
+  **Skill:** `customer-success:troubleshoot` · **Owner:** Client Success Manager · **Status:** planned (scaffold). Runs the troubleshooting process so issues get the right owner fast — Customer Success stays the client's point of contact regardless of who fixes it.
+</Info>
+
+## What it does
+
+1. **Understand** — gather facts (what, when, impact, reproducible?, one client or many?).
+2. **Severity** — does it block lead delivery / transfers / the client's business?
+3. **Ownership** — route per the table below.
+4. **Communicate** — draft a client update (status, next steps, timeline, any client action).
+5. **Resolve** — root cause identified, solution implemented, client informed, record updated.
+
+### Ownership routing
+
+| Issue | Owner |
+| --- | --- |
+| Client communication, account health, activation, expansion, renewals | Customer Success |
+| CRM & lead-vendor integrations, technical troubleshooting | Solutions Engineering |
+| Product bugs, feature requests | Product |
+| Platform reliability | Engineering |
+| Performance optimization | Performance |
+
+## What it does in Orrery
+
+Classify the issue, assign the owning team, **draft a Linear ticket** (RICE-scored if Mav-owned), and draft the client update. Inspect mongo to help reproduce / scope.
+
+## Gaps
+
+- Resolution logging lives in the **HubSpot Client Success Meeting object** — write-back needs a HubSpot MCP.

@@ -1,0 +1,29 @@
+---
+title: "Go-Live Check"
+description: "Verify the Going-Live checklist against the account's real configuration."
+sidebarTitle: "Go-Live Check"
+icon: "rocket"
+tag: "Soon"
+---
+
+<Info>
+  **Skill:** `customer-success:go-live-check` · **Owner:** Client Success Manager · **Status:** planned (scaffold). Runs the onboarding **Going Live checklist** against the account's actual config and reports what's missing — supporting the 1-year goal of **time-to-live ≤ 7 days**.
+</Info>
+
+## What it does
+
+Check each Going-Live item against the account's real state and report ✅ / ❌ with specifics:
+
+- Bandwidth number configured in Mav (Bots) and A2P campaign attached.
+- DID number accurate (Party Lines → Settings); availability accurate.
+- Lead integration live — debug logs clean (or imports configured if manual).
+- Playbooks set up; team members invited.
+
+## Data sources
+
+- **mongo** — account / bot / service config, party-line settings, playbooks, users, integration debug logs.
+
+## Gaps
+
+- **Bandwidth / 10DLC portal** steps (sub-account, location, campaign approval) are external and stay human — Orrery verifies the Mav-side result, not the portal actions.
+- Some live config may sit on the app node rather than the analytics node — confirm read paths.

@@ -1,0 +1,31 @@
+---
+title: "Meeting Prep"
+description: "Assemble the weekly Client Success meeting brief following the standard agenda."
+sidebarTitle: "Meeting Prep"
+icon: "clipboard-check"
+tag: "Soon"
+---
+
+<Info>
+  **Skill:** `customer-success:meeting-prep` · **Owner:** Client Success Manager · **Status:** planned (scaffold). The biggest capacity lever — auto-prep the brief so a CSM walks into every weekly meeting ready (this is the heart of the Engineer Success 4× goal).
+</Info>
+
+## What it does
+
+Produce a one-screen brief for an account following the **standard meeting agenda**:
+
+1. **Operational review** — lead flow, transfers, open support issues, outstanding action items.
+2. **Activation review** (if not yet Activated) — activation % and blockers.
+3. **Account-health review** — Healthy vs At-Risk signals.
+4. **Performance review** — contact rate, transfer rate, quote rate, policy rate (to _communicate_, not optimize).
+5. **Voice of the Client** — recent sentiment / feedback from Granola call transcripts.
+6. **Expansion & renewal** — any signals or upcoming dates.
+7. **Action items** — open Linear tickets / Todoist tasks for the account.
+
+## Data sources
+
+- **mongo** — lead flow, transfers, account config. **Mixpanel** — contact/transfer/quote/policy rates \+ funnel. **Granola** — recent client-meeting sentiment. **Linear / Todoist** — open items.
+
+## Gaps
+
+- The **Client Success Meeting object** (the system of record) lives in **HubSpot** — reading prior notes and writing the post-meeting record needs a HubSpot MCP. Until then this skill _assembles_ the brief; the CSM logs it in HubSpot.

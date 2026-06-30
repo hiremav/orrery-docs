@@ -106,7 +106,13 @@
                     "group": "Skills",
                     "icon": "wand-magic-sparkles",
                     "pages": [
-                      "eos/processes/customer-success/skills/at-risk"
+                      "eos/processes/customer-success/skills/at-risk",
+                      "eos/processes/customer-success/skills/activation-review",
+                      "eos/processes/customer-success/skills/meeting-prep",
+                      "eos/processes/customer-success/skills/go-live-check",
+                      "eos/processes/customer-success/skills/troubleshoot",
+                      "eos/processes/customer-success/skills/expansion-renewal",
+                      "eos/processes/customer-success/skills/offboarding"
                     ]
                   }
                 ]

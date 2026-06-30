@@ -1,0 +1,33 @@
+---
+title: "Activation Review"
+description: "Drive a not-yet-Activated client toward the Activated milestone."
+sidebarTitle: "Activation Review"
+icon: "gauge-high"
+tag: "Soon"
+---
+
+<Info>
+  **Skill:** `customer-success:activation-review` · **Owner:** Client Success Manager · **Status:** planned (scaffold). This is the weekly activation review run until a client reaches **Activated** (cumulative recurring leads ≥ monthly contracted commitment).
+</Info>
+
+## What it does
+
+For a client that hasn't hit Activated yet:
+
+- Compute **activation %** = cumulative **recurring** leads ÷ monthly contracted lead commitment.
+- Check **operational readiness**: is recurring lead flow active and increasing? are transfers occurring? first transfer / first quote / first policy reached?
+- Pull **funnel drop-off** (volume → connection → duration) from Mixpanel.
+- List **activation blockers**, each with an owner, a next action, and a target resolution date.
+- Recommend next steps and flag whether to keep Activation a standing agenda item.
+
+## Data sources (engine-aware)
+
+- **Recurring leads** — `leads` (Classic) / `next_contacts` (Next) by `created_at`; count **recurring** (integration-delivered) only — manually imported / aged leads don't count toward Activation.
+- **Transfers / first transfer** — Classic `party_lines` (`outcome: 'successful'`); Next phone-call sessions in `next_sessions` with a `role: :rep` participant.
+- **Funnel** — Mixpanel. 
+- **Context** — recent Granola client-meeting transcripts.
+
+## Gaps
+
+- **Contracted lead commitment** lives in HubSpot / the Order Form — ask the human until a HubSpot MCP is wired.
+- Distinguishing **recurring vs manual-import** leads relies on the lead's originator/source — confirm the field in the lexicon.
