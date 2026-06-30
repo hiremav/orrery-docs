@@ -1,0 +1,40 @@
+---
+title: "Go-Live Check"
+description: "Verify the Going-Live checklist against the account's real configuration."
+sidebarTitle: "Go-Live Check"
+icon: "rocket"
+---
+
+<Info>
+  **Skill:** `customer-success:go-live-check` · **Owner:** Client Success Manager. The single source of truth the skill hydrates from Orrery. Supports the 1-year goal **time-to-live ≤ 7 days**.
+</Info>
+
+## Purpose
+
+Confirm an account is actually ready to launch by checking the **Going-Live checklist** against its real configuration in Mav, and report exactly what's missing.
+
+## How Orrery runs this
+
+1. **Resolve the account** and **read `account.next_enabled` first** (Classic vs Next config lives in different places — see the lexicon).
+2. Check each item below against real config; report **✅ / ❌ with specifics** and, for each ❌, the next action and owner.
+3. Summarize: ready to go live? If not, the blocking items.
+
+## Checklist
+
+| Item | What "done" looks like | Where to look |
+| --- | --- | --- |
+| Bandwidth number configured | Number set on the bot/agent; A2P campaign attached | bot `service_configs` / `next_channels` |
+| DID number accurate | Transfer DID matches the client's number | `party_lines` settings / account |
+| Availability accurate | Party-line availability schedule set | account availability config |
+| Lead integration live | Debug logs show leads arriving (or imports configured if manual) | integration debug logs / imports |
+| Playbooks set up | At least the primary playbook configured | bot `playbooks` / `next_agents` |
+| Team members invited | Client users present on the account | `users` |
+
+## Data sources
+
+- **mongo** — account / bot / service config, party-line settings, playbooks, users, integration debug logs.
+
+## Gaps
+
+- **Bandwidth / 10DLC portal** steps (sub-account, location, campaign approval) are external and stay human — Orrery verifies the **Mav-side result**, not the portal actions.
+- Some live config may sit on the app node rather than the read-only analytics node — note anything you couldn't read rather than assuming it's missing.

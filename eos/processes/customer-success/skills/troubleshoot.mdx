@@ -1,0 +1,46 @@
+---
+title: "Troubleshoot"
+description: "Triage a client issue end-to-end: severity, ownership routing, ticket + client update."
+sidebarTitle: "Troubleshoot"
+icon: "wrench"
+---
+
+<Info>
+  **Skill:** `customer-success:troubleshoot` · **Owner:** Client Success Manager. The single source of truth the skill hydrates from Orrery. Customer Success stays the client's point of contact regardless of which team owns the fix.
+</Info>
+
+## Purpose
+
+Take a client issue and run the troubleshooting process end-to-end so it gets the right owner fast, with a clear client update — never a silent escalation.
+
+## How Orrery runs this
+
+1. **Understand** — gather the facts: what is the client experiencing, when did it start, what's the impact, can it be reproduced, does it affect one client or many? If account-specific, resolve the account and **read `account.next_enabled` first**; inspect mongo to help scope/reproduce.
+2. **Severity** — does it block lead delivery, transfers, or the client's business? Is there a workaround? Does it hit multiple clients? → High / Medium / Low (High escalates immediately).
+3. **Ownership** — route per the table below.
+4. **Communicate** — draft a plain-language client update: current status, next steps, expected timeline, any action needed from the client.
+5. **Resolution criteria** — root cause identified, solution implemented, client informed, record updated. Keep the issue open until all four are met.
+
+### Ownership routing
+
+| Issue | Owner |
+| --- | --- |
+| Client communication, account health, activation, expansion, renewals | Customer Success |
+| CRM & lead-vendor integrations, technical troubleshooting | Solutions Engineering |
+| Product bugs, feature requests | Product |
+| Platform reliability | Engineering |
+| Performance optimization | Performance |
+
+## What Orrery produces
+
+- A triage summary (issue, severity, owning team).
+- A **drafted Linear ticket** for the owning team — RICE-scored (Reach, Impact, Confidence, Effort) if Mav-owned. **Confirm with the human before creating it.**
+- A drafted client update.
+
+## Guiding principles
+
+Diagnose before prescribing · escalate early when more expertise is needed · solve root causes, not symptoms · keep the client informed · Customer Success owns the relationship from identification through resolution.
+
+## Gaps
+
+- Resolution logging lives in the **HubSpot Client Success Meeting object** — write-back needs a HubSpot MCP.
