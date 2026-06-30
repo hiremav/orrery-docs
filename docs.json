@@ -73,6 +73,18 @@
           "index",
           "how-we-use-it"
         ]
+      },
+      {
+        "group": "EOS",
+        "icon": "compass",
+        "pages": [
+          "eos/vision",
+          "eos/people",
+          "eos/data",
+          "eos/issues",
+          "eos/process",
+          "eos/traction"
+        ]
       }
     ]
   }
