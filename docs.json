@@ -96,7 +96,21 @@
             "group": "Processes",
             "icon": "diagram-project",
             "pages": [
-              "eos/process"
+              "eos/process",
+              {
+                "group": "Customer Success",
+                "icon": "headset",
+                "pages": [
+                  "eos/processes/customer-success",
+                  {
+                    "group": "Skills",
+                    "icon": "wand-magic-sparkles",
+                    "pages": [
+                      "eos/processes/customer-success/skills/at-risk"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {

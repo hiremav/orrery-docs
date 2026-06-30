@@ -1,0 +1,80 @@
+---
+title: "Customer Success — The Mav Way"
+description: "How Mav manages client relationships from Closed-Won through renewal or churn."
+sidebarTitle: "Overview"
+icon: "headset"
+---
+
+<Info>
+  **Owner:** Client Success Manager · **Approvers:** Chief Growth Officer, Client Success Manager · **Version:** 1.0. The canonical Client Success Operating Manual. Orrery reads this when a question or skill needs the Customer Success process.
+</Info>
+
+## Purpose
+
+Define how Mav manages client relationships from **Closed-Won through renewal or churn**, so every client gets a consistent experience. Every process supports one objective: **help every client achieve measurable business outcomes while maximizing long-term recurring revenue for Mav.**
+
+## Philosophy
+
+- **Customer Success owns the client relationship** — it coordinates Product, Performance, Engineering, Solutions Engineering, Sales, and Leadership to deliver a consistent experience.
+- Measured by the client's **long-term success**, not by completing individual tasks.
+- Every interaction should move the client toward: successful Go Live → Activation → Healthy → Expansion → Renewal.
+- **What it does _not_ own:** product roadmap, feature development, engineering implementation, platform reliability, integration development, performance-optimization strategy, marketing, or new-logo sales. Customer Success _identifies_ issues, _coordinates_ the right team, and _owns the client communication and accountability_ until resolved.
+
+## Priorities (in order)
+
+1. **Prevent churn** — recover at-risk clients before they cancel.
+2. **Drive clients to Activation** — remove blockers to the Activated milestone.
+3. **Resolve operational issues** — coordinate internal teams on technical/integration problems.
+4. **Maintain healthy relationships** — proactive communication and follow-through.
+5. **Grow existing accounts** — expansion that increases recurring revenue.
+6. **Renew clients.**
+7. **Represent the Voice of the Client** internally.
+
+## Lifecycle: statuses & milestones
+
+A client has exactly **one status** at a time but can earn **many milestones**.
+
+**Statuses:** `Onboarding` → `Healthy` ↔ `At-Risk` → (`Churned`). **Milestones:** `Onboarded` → `Activated` → `Expanded` → `Renewed`. The **happy path**: Closed-Won → Onboarding → Go Live → Healthy → Activated → Expansion(s) → Renewal(s).
+
+<Note>
+  **Activation** = cumulative **recurring** leads submitted ≥ the client's monthly contracted lead commitment (not time-bound). **Recurring leads** arrive via an active integration; **manually imported / aged leads do not count** toward Activation. A **Transfer** = a qualified consumer connected live to the client's team. These tie directly to the data-model lexicon.
+</Note>
+
+## Meeting cadence
+
+- **Weekly:** Onboarding, working-toward-Activation, At-Risk, enterprise, or accounts with active issues.
+- **Bi-weekly:** Healthy accounts needing ongoing guidance.
+- **Monthly:** mature, low-touch Healthy accounts.
+
+**Standard agenda:** Operational review → Activation review (until Activated) → Account-health review → Performance review (communicate, don't optimize) → Voice of the Client → Expansion & renewal → Action items. **Every meeting is documented in the HubSpot Client Success Meeting object.**
+
+## Troubleshooting
+
+1. Understand the issue → 2. Determine severity → 3. Determine ownership (Customer Success stays the client's point of contact regardless of which team owns the fix) → 4. Communicate → 5. Resolution (root cause identified, solution implemented, client informed, HubSpot updated).
+
+## Jobs → Skills
+
+The discrete jobs in this process, mapped 1:1 to Orrery skills (`customer-success:<skill>`). Each skill hydrates its instructions from its page under **Skills**.
+
+| Job | Skill | Status |
+| --- | --- | --- |
+| Find / evaluate at-risk accounts and drive recovery | `customer-success:at-risk` | **Live (spike)** |
+| Onboarding → Go Live (10DLC, integration, go-live checklist) | `customer-success:onboarding` | Planned |
+| Weekly activation review until Activated | `customer-success:activation-review` | Planned |
+| Client Success meeting prep \+ HubSpot notes | `customer-success:meeting-prep` | Planned |
+| Troubleshooting / issue triage \+ routing | `customer-success:troubleshoot` | Planned |
+| Expansion & renewal review | `customer-success:expansion-renewal` | Planned |
+| Offboarding / churn post-mortem | `customer-success:offboarding` | Planned |
+
+## Guardrails (“what we don't do”)
+
+- No silent escalations — the client hears from us first.
+- No removing an account from at-risk without a documented root cause in the HubSpot note.
+- No carrying recovery accounts indefinitely — after a second failed extension, Customer Success \+ Sales jointly decide: renegotiate, pause, or churn.
+
+## Gaps / TODO (before this is fully “followed by all” \+ automatable)
+
+- **At-Risk requirements marked “TBD”** in the source manual — finalize the required fields.
+- **Two notions of “at-risk”** — the holistic health _status_ vs. the operational _playbook_ (the four scenarios). The skill operationalizes the playbook; reconcile the wording.
+- **HubSpot is not yet reachable by Orrery** — the “Happy?” column / Client Updates spreadsheet and the contracted lead commitment live in HubSpot/Order Forms, so sentiment and quota currently need a human. Wiring a HubSpot MCP would close most of the automation gaps here.
+- **hiremav.com setup links** in the manual are placeholders — add the real references.

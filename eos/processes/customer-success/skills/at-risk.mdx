@@ -1,0 +1,73 @@
+---
+title: "At Risk"
+description: "The Customer Success at-risk playbook — the canonical definition the customer-success:at-risk skill runs."
+sidebarTitle: "At Risk"
+icon: "triangle-exclamation"
+---
+
+<Info>
+  **Skill:** `customer-success:at-risk` · **Owner:** Client Success Manager. This page is the **single source of truth** the skill hydrates from Orrery (via the Mintlify MCP). Edit the playbook here and the skill's behavior changes — no code change.
+</Info>
+
+## Definition
+
+An account is **at-risk** when it **does not meet its contractual lead-volume requirement** **and** it **has expressed dissatisfaction** with Mav's performance (documented in the “Happy?” column of the Client Updates spreadsheet).
+
+When an account is deemed at-risk, the Solutions Engineer diagnosis must name **which layer is implicated**:
+
+- **Mav-owned** → the fix ships to all accounts and is RICE-scored (Reach, Impact, Confidence, Effort) at the client-base level (Reach = 4).
+- **Client-owned** → the fix is scoped to that account and Customer Success owns the conversation.
+
+This keeps brand-level changes from being used to solve one client's problem, and a brand-level miss from being treated as a one-off.
+
+## Scenarios
+
+| Scenario | Definition | Response |
+| --- | --- | --- |
+| **No transfers at volume** | No transfers after ≥ 200 leads ingested | Trigger Client Success Manager \+ Solutions Engineering investigation |
+| **Time window closed, no transfers** | No transfer ≥ 7 days post-launch | Trigger Client Success Manager investigation |
+| **Low lead flow, below quota** | Lead flow below contractual agreement 30 days after onboarding | Trigger Client Success Manager investigation |
+| **Poor sentiment** | Client has expressed dissatisfaction with Mav | Trigger Client Success Manager investigation |
+
+### No transfers at volume
+
+The account is sending leads at/above its baseline forecast but has **0 qualified transfers**.
+
+- **Owner:** Solutions Engineer (lead), Client Success Manager coordinates client comms.
+- **Strategy:** SE checks the integration and event firing end-to-end (are events arriving, or are leads dropping in the integration?). Product checks automation logs in parallel for routing/dialer errors. The Client Success Manager messages the client plainly: “We're seeing strong volume but our transfers aren't connecting — here's what we're investigating.” If the cause is product/integration, SE or Product opens a Linear ticket and scores it against the rubric. If it's client-side (poor lead source, bad numbers, agents offline), the Client Success Manager books a working session within 3 business days.
+
+### Time window closed, no transfers
+
+Day 7 has passed and the account has no qualifying transfers.
+
+- **Owner:** Client Success Manager.
+- **Strategy:** Pull the account's funnel in Mixpanel and write a one-paragraph diagnosis: where did leads drop off (volume, connection, duration), or is there a source issue? Book a 30-minute review to share the diagnosis and align on a recovery plan. Confirm whether we're on real-time vs aged leads, recurring vs manually imported, and whether Mav is in front of / behind / beside the call center. If product/integration, loop in SE or Product the same day and open a Linear ticket. Agree an extended activation window (typically \+14 days). Flag the account as recovery in HubSpot so it surfaces in the weekly review until it activates or formally churns.
+
+### Low lead flow, below quota (delayed onboarding)
+
+Onboarding is complete (campaign approved, integration set up by the Solutions Engineer) but the client hasn't sent lead flow for 14\+ days.
+
+- **Owner:** Client Success Manager.
+- **Strategy:** Confirm with Product and Solutions that integration and onboarding are complete. If so, escalate to Sales to meet the client and evaluate next steps.
+
+### Poor sentiment
+
+The client has expressed they're unhappy with Mav — to a Mav employee or externally.
+
+- **Owner:** Client Success Manager.
+- **Strategy:** Schedule a meeting to talk through the data and find the root of the dissatisfaction. If it stems from the data, meet with Product and the Solutions Engineer to find optimizations; the Client Success Manager can submit improvement requests via `/asks` in `#product-performance`. If it isn't rooted in the data, schedule a follow-up with a member of leadership (e.g. the Chief Growth Officer).
+
+## What we don't do
+
+- **No silent escalations** — the client always hears from us before anyone else.
+- **No removing an account from the at-risk list** without a documented root cause in the HubSpot note.
+- **No carrying recovery accounts indefinitely** — if a second extension fails, Customer Success and Sales jointly decide the path forward (renegotiated scope, pause, or churn).
+
+## How Orrery runs this (data sources)
+
+When executing this playbook, Orrery branches on the account's engine (`Account#next_enabled`) and counts the right things:
+
+- **Lead volume** = **recurring** leads (via integration), not manual imports — `leads` (Classic) or `next_contacts` (Next), windowed by `created_at`.
+- **Qualified transfers** — Classic: `party_lines` with `outcome: 'successful'`; Next: phone-call sessions in `next_sessions` with `transfer_target_number` \+ a `role: :rep` participant who joined.
+- **Funnel drop-off** — Mixpanel. **Sentiment** — Granola client-meeting transcripts \+ ask the human.
+- **Not reachable yet:** the “Happy?” column / Client Updates spreadsheet and the contracted lead commitment live in HubSpot/Order Forms — Orrery asks the human for these rather than inventing them. Confirm the diagnosis with the human before opening a Linear ticket or creating Todoist tasks.
