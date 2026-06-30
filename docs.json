@@ -79,33 +79,41 @@
         "icon": "compass",
         "pages": [
           "eos/overview",
+          "eos/vision",
+          "eos/people",
           {
-            "group": "Leadership",
-            "icon": "crown",
+            "group": "Scorecard",
+            "icon": "chart-line",
             "pages": [
-              "eos/vision",
-              "eos/people",
               "eos/data",
-              "eos/issues",
-              "eos/process",
-              "eos/traction"
+              "eos/growth/scorecard",
+              "eos/scorecard/brand",
+              "eos/scorecard/product"
             ]
           },
           {
-            "group": "Teams",
-            "icon": "users-line",
+            "group": "Issues",
+            "icon": "list-check",
             "pages": [
-              {
-                "group": "Growth",
-                "icon": "arrow-trend-up",
-                "pages": [
-                  "eos/growth/scorecard",
-                  "eos/growth/issues",
-                  "eos/growth/rocks"
-                ]
-              },
-              "eos/brand/index",
-              "eos/product/index"
+              "eos/issues",
+              "eos/growth/issues"
+            ]
+          },
+          {
+            "group": "Processes",
+            "icon": "diagram-project",
+            "pages": [
+              "eos/process"
+            ]
+          },
+          {
+            "group": "Rocks",
+            "icon": "bullseye-arrow",
+            "pages": [
+              "eos/traction",
+              "eos/growth/rocks",
+              "eos/rocks/brand",
+              "eos/rocks/product"
             ]
           }
         ]
