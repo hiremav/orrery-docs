@@ -3,31 +3,40 @@ title: "Activation Review"
 description: "Drive a not-yet-Activated client toward the Activated milestone."
 sidebarTitle: "Activation Review"
 icon: "gauge-high"
-tag: "Soon"
 ---
 
 <Info>
-  **Skill:** `customer-success:activation-review` · **Owner:** Client Success Manager · **Status:** planned (scaffold). This is the weekly activation review run until a client reaches **Activated** (cumulative recurring leads ≥ monthly contracted commitment).
+  **Skill:** `customer-success:activation-review` · **Owner:** Client Success Manager. The single source of truth the skill hydrates from Orrery. A client is **Activated** when cumulative **recurring** leads ≥ their monthly contracted lead commitment (not time-bound).
 </Info>
 
-## What it does
+## Purpose
 
-For a client that hasn't hit Activated yet:
+For a client that hasn't reached **Activated** yet, run the weekly activation review: measure progress, check operational readiness, find what's blocking, and produce next steps. Activation is the leading indicator of long-term retention, so this is priority #2 in Customer Success.
 
-- Compute **activation %** = cumulative **recurring** leads ÷ monthly contracted lead commitment.
-- Check **operational readiness**: is recurring lead flow active and increasing? are transfers occurring? first transfer / first quote / first policy reached?
-- Pull **funnel drop-off** (volume → connection → duration) from Mixpanel.
-- List **activation blockers**, each with an owner, a next action, and a target resolution date.
-- Recommend next steps and flag whether to keep Activation a standing agenda item.
+## How Orrery runs this
+
+1. **Resolve the account** and **read `account.next_enabled` first** (decides Classic vs Next collections — see the data-model lexicon).
+2. **Confirm the client is pre-Activation.** If cumulative recurring leads already ≥ commitment, say so and stop (they're Activated).
+3. Compute and report the items below. **Confirm with the human before creating Todoist tasks.**
+
+## What to compute
+
+- **Activation %** = cumulative **recurring** leads ÷ monthly contracted commitment. Count integration-delivered (recurring) leads only — **manual imports / aged leads don't count.**
+- **Lead flow** — is recurring flow active? Is volume increasing (last 7d vs prior 7d)?
+- **Operational readiness** — are transfers occurring? first transfer reached? first quote? first policy?
+- **Funnel drop-off** (Mixpanel) — volume → connection → duration; where are leads dropping?
+- **Activation blockers** — for each, an owner, a next action, and a target resolution date. Common blockers: no recurring lead flow, low volume, integration issues (lead vendor or CRM), transfer delivery issues, client staffing/operational issues, competing texting/automation systems.
+
+## Output
+
+Activation % \+ an operational-readiness checklist (✅/❌) \+ a blockers table (blocker · owner · next action · target date) \+ recommended next steps \+ whether Activation stays a standing agenda item.
 
 ## Data sources (engine-aware)
 
-- **Recurring leads** — `leads` (Classic) / `next_contacts` (Next) by `created_at`; count **recurring** (integration-delivered) only — manually imported / aged leads don't count toward Activation.
-- **Transfers / first transfer** — Classic `party_lines` (`outcome: 'successful'`); Next phone-call sessions in `next_sessions` with a `role: :rep` participant.
-- **Funnel** — Mixpanel. 
-- **Context** — recent Granola client-meeting transcripts.
+- **Recurring leads** — `leads` (Classic) / `next_contacts` (Next) by `created_at`, recurring only.
+- **Transfers / first transfer** — Classic `party_lines` (`outcome: 'successful'`); Next phone-call sessions in `next_sessions` with a `role: :rep` participant. **Funnel** — Mixpanel.
 
 ## Gaps
 
-- **Contracted lead commitment** lives in HubSpot / the Order Form — ask the human until a HubSpot MCP is wired.
-- Distinguishing **recurring vs manual-import** leads relies on the lead's originator/source — confirm the field in the lexicon.
+- **Contracted commitment** lives in HubSpot / the Order Form — ask the human until a HubSpot MCP is wired; don't invent it.
+- Distinguishing **recurring vs manual-import** leads relies on the lead's originator/source field — confirm it in the lexicon.

@@ -3,29 +3,38 @@ title: "Meeting Prep"
 description: "Assemble the weekly Client Success meeting brief following the standard agenda."
 sidebarTitle: "Meeting Prep"
 icon: "clipboard-check"
-tag: "Soon"
 ---
 
 <Info>
-  **Skill:** `customer-success:meeting-prep` · **Owner:** Client Success Manager · **Status:** planned (scaffold). The biggest capacity lever — auto-prep the brief so a CSM walks into every weekly meeting ready (this is the heart of the Engineer Success 4× goal).
+  **Skill:** `customer-success:meeting-prep` · **Owner:** Client Success Manager. This page is the **single source of truth** the skill hydrates from Orrery (via the Mintlify MCP). Edit it here and the skill's behavior changes — no code change.
 </Info>
 
-## What it does
+## Purpose
 
-Produce a one-screen brief for an account following the **standard meeting agenda**:
+Walk a CSM into every weekly meeting prepared. Given an account, produce a **one-screen brief** that follows the standard Client Success meeting agenda, sourced from real data. This is the core capacity lever behind Engineer Success — it removes the manual prep from ~50 meetings/week.
 
-1. **Operational review** — lead flow, transfers, open support issues, outstanding action items.
-2. **Activation review** (if not yet Activated) — activation % and blockers.
-3. **Account-health review** — Healthy vs At-Risk signals.
-4. **Performance review** — contact rate, transfer rate, quote rate, policy rate (to _communicate_, not optimize).
-5. **Voice of the Client** — recent sentiment / feedback from Granola call transcripts.
-6. **Expansion & renewal** — any signals or upcoming dates.
-7. **Action items** — open Linear tickets / Todoist tasks for the account.
+## How Orrery runs this
+
+1. **Resolve the account** in mongo (id or name) and **read `account.next_enabled` first** — it decides which collections everything else queries (see the data-model lexicon: `leads`/`party_lines` for Classic, `next_contacts`/`next_sessions` for Next).
+2. Assemble the brief, one section per agenda item (below). Source every number; where a number isn't reachable, say so and list it under "Needs the human."
+3. Present the brief, then list **open questions for the human** (contracted commitment, renewal date, sentiment confirmation) — don't invent these.
+
+## The brief (standard agenda)
+
+1. **Operational review** — recurring lead flow (last 7d / 30d), transfers (count \+ most recent), open support issues (Linear tickets for the account), outstanding action items (Todoist). Call out any operational blocker.
+2. **Activation review** (only if not yet Activated) — activation % = cumulative recurring leads ÷ monthly contracted commitment; top blockers. (Hand off to `customer-success:activation-review` for the deep version.)
+3. **Account-health review** — Healthy vs At-Risk read: utilization vs commitment, recurring flow over the trailing 30d, transfers, engagement signals. If at-risk indicators are present, flag them and point to `customer-success:at-risk`.
+4. **Performance review** (communicate, don't optimize) — contact rate (conversations ÷ leads), transfer rate (transfers ÷ leads), quote rate, policy rate. Trends vs prior period. Note whether Performance should be engaged.
+5. **Voice of the Client** — pull the most recent client meeting from Granola; summarize sentiment \+ any feedback, feature requests, testimonials.
+6. **Expansion & renewal** — expansion signals (utilization consistently \> commitment, strong advocacy); upcoming renewal date (HubSpot-gated — ask).
+7. **Action items** — consolidated open Linear tickets \+ Todoist tasks for the account.
 
 ## Data sources
 
 - **mongo** — lead flow, transfers, account config. **Mixpanel** — contact/transfer/quote/policy rates \+ funnel. **Granola** — recent client-meeting sentiment. **Linear / Todoist** — open items.
 
-## Gaps
+## Guardrails & gaps
 
-- The **Client Success Meeting object** (the system of record) lives in **HubSpot** — reading prior notes and writing the post-meeting record needs a HubSpot MCP. Until then this skill _assembles_ the brief; the CSM logs it in HubSpot.
+- **Communicate performance, don't optimize it** — optimization is the Performance team's job.
+- Don't invent metrics you can't source — list them under "Needs the human."
+- The **Client Success Meeting object** (system of record) is in **HubSpot** — reading prior notes and writing the post-meeting record needs a HubSpot MCP. For now Orrery _assembles_ the brief; the CSM logs it in HubSpot.
