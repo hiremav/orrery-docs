@@ -78,12 +78,36 @@
         "group": "EOS",
         "icon": "compass",
         "pages": [
-          "eos/vision",
-          "eos/people",
-          "eos/data",
-          "eos/issues",
-          "eos/process",
-          "eos/traction"
+          "eos/overview",
+          {
+            "group": "Leadership",
+            "icon": "crown",
+            "pages": [
+              "eos/vision",
+              "eos/people",
+              "eos/data",
+              "eos/issues",
+              "eos/process",
+              "eos/traction"
+            ]
+          },
+          {
+            "group": "Teams",
+            "icon": "users-line",
+            "pages": [
+              {
+                "group": "Growth",
+                "icon": "arrow-trend-up",
+                "pages": [
+                  "eos/growth/scorecard",
+                  "eos/growth/issues",
+                  "eos/growth/rocks"
+                ]
+              },
+              "eos/brand/index",
+              "eos/product/index"
+            ]
+          }
         ]
       }
     ]
