@@ -1,0 +1,27 @@
+---
+title: "Process Gaps"
+description: "A running log of gaps found while packaging each core process into Mintlify + Orrery — to send back to the process owners."
+sidebarTitle: "Gaps"
+icon: "clipboard-list"
+tag: "WIP"
+---
+
+<Info>
+  **What this is.** As each department's core process is packaged into Mintlify (and wired into Orrery as skills), we note what's missing, ambiguous, or blocking automation. This page is the running list to send back to each process owner to tighten before “Followed By All.” Updated per process as we go.
+</Info>
+
+## Customer Success
+
+Owner: Client Success Manager. Source: Client Success Operating Manual v1.0.
+
+| Gap | Why it matters | Suggested fix |
+| --- | --- | --- |
+| **At-Risk “Requirements” marked TBD** in the manual | The required fields for an at-risk account (root cause, recovery plan, owner, weekly review) aren't finalized | Finalize the required at-risk fields and where they're recorded |
+| **Two definitions of “at-risk”** — the holistic health _status_ (many signals) vs. the 4-scenario _playbook_ (operational triggers) | Ambiguity for both humans and the `customer-success:at-risk` skill, which runs the playbook | Reconcile: the _status_ is the signal, the _playbook_ is the response — state the relationship explicitly |
+| **HubSpot isn't reachable by Orrery** — the “Happy?” column (Client Updates spreadsheet) and the contracted lead commitment live there | The at-risk definition needs _both_ contractual-quota miss **and** dissatisfaction; today neither can be read automatically, so a human must supply them | Wire a **HubSpot MCP** into Orrery — this closes most of the CS automation gaps (sentiment, quota, the recovery flag) |
+| **Offboarding / Cancellations is an empty section** (header only) | The Churned status requires an offboarding checklist \+ post-mortem, but the steps aren't written | Document the cancellation / offboarding process |
+| **Most hiremav.com walkthrough sections are headers only** (Party Lines, Leads, Playbooks, Integrations, Settings, Admin, Reporting, Get Help) | The “how to operate in hiremav.com” reference is largely empty, so onboarding can't be fully self-serve | Fill in the product-walkthrough sections, or link to a dedicated product doc |
+| **Placeholder hyperlinks** — several hiremav.com setup links read “(insert hyperlink)” | Broken references inside the onboarding/integration steps | Add the real links |
+| **Source typo** — “No transfers after ≥ 2Yes00 leads” | Ambiguous threshold (published doc cleaned to **≥ 200**) | Confirm 200 is the intended threshold |
+
+_More sections added here as we package Sales, Engineering, Product, Performance, and HR & Finance._
