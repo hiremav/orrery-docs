@@ -91,14 +91,7 @@
               "eos/scorecard/product"
             ]
           },
-          {
-            "group": "Issues",
-            "icon": "list-check",
-            "pages": [
-              "eos/issues",
-              "eos/growth/issues"
-            ]
-          },
+          "eos/issues",
           {
             "group": "Processes",
             "icon": "diagram-project",
